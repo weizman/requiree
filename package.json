@@ -1,0 +1,25 @@
+{
+  "name": "requiree",
+  "version": "1.0.0",
+  "description": "Optionally export modules with development properties",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine test/requireCustomedRequireMethodSpec.js && jasmine test/requireDevSpec.js && jasmine test/requireRegSpec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weizman/requiree.git"
+  },
+  "keywords": [
+    "require",
+    "debug",
+    "test",
+    "requiree",
+    "development",
+    "unit test",
+    "private"
+  ],
+  "author": "Gal Weizman <weizmangal@gmail.com> (https://github.com/weizman)",
+  "license": "MIT",
+  "homepage": "https://github.com/weizman/requiree#readme"
+}
