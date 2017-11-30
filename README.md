@@ -29,7 +29,7 @@ var getOne = function() {
 };
 
 // initialize the dev object used by requiree package
-module.exports.dev = {};
+module.exports.dev = {}; // NOTICE: requiree uses @dev prop hardcoded, cannot use any different names
 
 // set the members you want to export only in dev mode
 module.exports.dev.ONE = ONE;
