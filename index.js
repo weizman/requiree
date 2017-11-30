@@ -24,9 +24,18 @@ var base = function(path, isDev, requireFunc) {
 
   var mod = (requireFunc || require)(path);
 
-  // not dev? delete dev properties
-  if (!isDev) {
-    delete mod.dev;
+  if (mod.dev) {
+
+    // not dev? delete dev properties
+    if (!isDev) {
+      delete mod.dev;
+
+    // dev? move all properties to the main module.exports object
+    } else {
+      for (var prop in mod.dev) {
+        mod[prop] = mod.dev[prop];
+      }
+    }
   }
 
   return mod;

@@ -7,6 +7,6 @@ describe("requiree", function() {
     expect(dummyModule.getOne).not.toBe(undefined);
     expect(dummyModule.getOne()).toBe(1);
 
-    expect(dummyModule.dev).toBe(undefined);
+    expect(dummyModule.ONE).toBe(undefined);
   });
 });
