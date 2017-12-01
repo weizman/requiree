@@ -9,5 +9,7 @@ describe("requiree", function() {
 
     expect(dummyModule.ONE).not.toBe(undefined);
     expect(dummyModule.ONE).toBe(1);
+    
+    expect(dummyModule._ONE).toBe(undefined);
   });
 });

@@ -1,8 +1,8 @@
 # requiree
-`requiree` - decide whether to import a package normally or in dev mode.
+`requiree` - Decide whether to import a package normally or in dev mode.
 
 # About
-`requiree` makes it possible to require a package normally and also in dev mode. Requiring a package in dev mode makes it possible to export some private members as well that should not be exported normally, and by that can be used for testing.
+`requiree` Makes it possible to require a package normally and also in dev mode. Requiring a package in dev mode makes it possible to export some private members as well that should not be exported normally, and by that can be used for testing.
 
 # Install
 In order to install `requiree` using `npm`, simply run:
@@ -28,11 +28,9 @@ var getOne = function() {
   return ONE;
 };
 
-// initialize the dev object used by requiree package
-module.exports.dev = {}; // NOTICE: requiree uses @dev prop hardcoded, cannot use any different names
-
 // set the members you want to export only in dev mode
-module.exports.dev.ONE = ONE;
+// NOTICE: requiree detects dev members only if they start with '_'
+module.exports._ONE = ONE;
 
 // set the members that should be exported normally
 module.exports.getOne = getOne;
@@ -48,6 +46,8 @@ var mod = requiree('./module.js');
 console.log(mod.getOne()); // will print: 1
 
 console.log(mod.ONE); // will print: undefined (ONE does not exist)
+
+console.log(mod._ONE); // will print: undefined (_ONE does not exist)
 ```
 
 `test.js` (example for a js file that requires `module.js` in dev mode):
@@ -60,6 +60,8 @@ var mod = requiree.dev('./module.js');
 console.log(mod.getOne()); // will print: 1
 
 console.log(mod.ONE); // will print: 1
+
+console.log(mod._ONE); // will print: undefined (_ONE does not exist)
 ```
 
 # Dependencies
@@ -75,4 +77,4 @@ In order to install `jasmine` simply run (through the command line):
 
 # Please Notice
 Once decided to start using `requiree` in your project, it must always be used.
-Using normal `require` will no longer work properly, since only `requiree` knows to delete the `dev` prop from the `module.exports` object, so using `require` will import package with the dev properties that are not intended to be exported!
+Using normal `require` will no longer work properly, since only `requiree` knows to delete the dev properties that starts with `_` from the `module.exports` object, so using `require` will import package with the dev properties that are not intended to be exported!

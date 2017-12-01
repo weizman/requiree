@@ -24,19 +24,20 @@ var base = function(path, isDev, requireFunc) {
 
   var mod = (requireFunc || require)(path);
 
-  if (mod.dev) {
+    for (var prop in mod) {
 
-    // not dev? delete dev properties
-    if (!isDev) {
-      delete mod.dev;
+      // prop name starts with '_'? that is the requiree default prefix
+      if ('_' === prop[0]) {
 
-    // dev? move all properties to the main module.exports object
-    } else {
-      for (var prop in mod.dev) {
-        mod[prop] = mod.dev[prop];
+        // is dev? save it noramlly to the module.exports object
+        if (isDev) {
+          mod[prop.replace('_', '')] = mod[prop]
+        }
+
+        // get rid of the old one (the prop with the '_' at the beginning)
+        delete mod[prop];
       }
     }
-  }
 
   return mod;
 };

@@ -4,7 +4,7 @@ var getOne = function() {
   return ONE;
 };
 
-module.exports.dev = {};
-module.exports.dev.ONE = ONE;
+// underscore indicates requiree private member
+module.exports._ONE = ONE;
 
 module.exports.getOne = getOne;

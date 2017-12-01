@@ -8,5 +8,7 @@ describe("requiree", function() {
     expect(dummyModule.getOne()).toBe(1);
 
     expect(dummyModule.ONE).toBe(undefined);
+
+    expect(dummyModule._ONE).toBe(undefined);
   });
 });
