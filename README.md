@@ -13,7 +13,17 @@ Using it makes it possible for you to require a package and access it's private 
 
 # Usage
 
-Using `requiree` is very simple and very convenient. However it requires some code changes.
+Using `requiree` is very simple and very convenient:
+
+```javascript
+// simply overwrite built-in require function with
+// requiree, and you are set to go!
+// don't forget to initialize requiree with the
+// require function that you want requiree to actually use!
+// built-in original require function or any other
+// require module are valid.
+require = require('requiree')(require);
+```
 
 Here is a full example of how to use `requiree`:
 
@@ -39,9 +49,9 @@ module.exports.getOne = getOne;
 `main.js` (example for a js file that requires `module.js` normally):
 
 ```javascript
-var requiree = require('requiree');
+require = require('requiree')(require);
 
-var mod = requiree('./module.js');
+var mod = require('./module.js');
 
 console.log(mod.getOne()); // will print: 1
 
@@ -53,9 +63,9 @@ console.log(mod._ONE); // will print: undefined (_ONE does not exist)
 `test.js` (example for a js file that requires `module.js` in dev mode):
 
 ```javascript
-var requiree = require('requiree');
+require = require('requiree')(require);
 
-var mod = requiree.dev('./module.js');
+var mod = require.dev('./module.js');
 
 console.log(mod.getOne()); // will print: 1
 
@@ -76,5 +86,7 @@ In order to install `jasmine` simply run (through the command line):
 `npm install -g jasmine`
 
 # Please Notice
+__tl;dr__ make sure to overwrite original `require` function with `requiree` and only use the overwrite, or else you're gonna have problems!
+
 Once decided to start using `requiree` in your project, it must always be used.
 Using normal `require` will no longer work properly, since only `requiree` knows to delete the dev properties that starts with `_` from the `module.exports` object, so using `require` will import package with the dev properties that are not intended to be exported!

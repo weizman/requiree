@@ -1,10 +1,10 @@
 {
   "name": "requiree",
-  "version": "2.0.0",
-  "description": "Optionally export modules with development properties",
+  "version": "3.0.0",
+  "description": "Optionally export modules with private properties (development mode)",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine test/requireCustomedRequireMethodSpec.js && jasmine test/requireDevSpec.js && jasmine test/requireRegSpec.js"
+    "test": "jasmine test/specs/requireDevSpec.js && jasmine test/specs/requireProdSpec.js"
   },
   "repository": {
     "type": "git",
