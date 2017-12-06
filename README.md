@@ -86,7 +86,27 @@ In order to install `jasmine` simply run (through the command line):
 `npm install -g jasmine`
 
 # Please Notice
-__tl;dr__ make sure to overwrite original `require` function with `requiree` and only use the overwrite, or else you're gonna have problems!
+__tl;dr__ Make sure to overwrite original `require` function with `requiree` and only use the overwrite, or else you're gonna have problems!
 
 Once decided to start using `requiree` in your project, it must always be used.
 Using normal `require` will no longer work properly, since only `requiree` knows to delete the dev properties that starts with `_` from the `module.exports` object, so using `require` will import package with the dev properties that are not intended to be exported!
+
+__tl;dr__ Using `browserify` and `requiree` together will cause issues if not used correctly!
+
+`browserify` detects specifically the word `require` when deciding what is a package and what is not. So trying to require using `requiree.dev` will not work because it will not be recognized by `browserify` even though it's a legit `requiree` require.
+To solve that, this is what needs to be done:
+```javascript
+// overwrite require with requiree, the prod function
+require = require('requiree')(require);
+
+// start with all the prod requires
+var moduleA = require('a'); // will be required as prod
+var moduleB = require('b'); // will be required as prod
+
+// now change require function to be the dev one
+require = require.dev;
+
+// now browserify will recognize the following as packages
+var moduleC = require('c'); // will be required as dev
+var moduleD = require('d'); // will be required as dev
+```
