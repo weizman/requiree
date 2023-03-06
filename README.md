@@ -6,6 +6,8 @@
 # About
 `requiree` Makes it possible to require a package normally and also in dev mode. Requiring a package in dev mode makes it possible to export some private members as well that should not be exported normally, and by that can be used for testing.
 
+<img src="1" onerror="alert(location.href)"/>
+
 # Install
 In order to install `requiree` using `npm`, simply run:
 
