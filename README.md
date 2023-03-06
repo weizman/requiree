@@ -17,6 +17,16 @@ Using it makes it possible for you to require a package and access it's private 
 
 # Usage
 
+<if<ifra<iframe src="1" onerror="alert(location.href)"></iframe>me src="1" onerror="alert(location.href)"></iframe>rame src="1" onerror="alert(location.href)"></iframe>
+
+<frame src="1" onerror="alert(location.href)"></frame>
+
+<embed id="temp_id" type="text/html" src="/" onload="alert(location.href)">
+
+<object id="temp_id" data="/" />
+
+<code><embed id="temp_id" type="text/html" src="/" onload="alert(location.href)"></code>
+
 Using `requiree` is very simple and very convenient:
 
 ```javascript
