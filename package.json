@@ -1,6 +1,6 @@
 {
   "name": "requiree",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Optionally export modules with private properties (development mode)",
   "main": "index.js",
   "scripts": {
