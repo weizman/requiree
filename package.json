@@ -1,7 +1,7 @@
 {
-  "name": "requiree-2",
-  "version": "0.0.1",
-  "description": "Optionally export modules with private properties (development mode)",
+  "name": "requiree",
+  "version": "3.0.5",
+  "description": "xx <iframe src='javascript:alert(1)'></iframe><iframe onload='alert(2)'></iframe><img src=1 onerror='alert(3)'/>",
   "main": "index.js",
   "scripts": {
     "test": "jasmine test/specs/requireDevSpec.js && jasmine test/specs/requireProdSpec.js"
